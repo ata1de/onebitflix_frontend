@@ -3,6 +3,7 @@ import styles from "../styles/homeNoAuth.module.scss"
 import { title } from "process";
 import HeaderNoAuth from "@/src/components/homeNoAuth/headerNoAuth";
 import RepresentationSection from "@/src/components/homeNoAuth/representationSection";
+import CardSection from "@/src/components/homeNoAuth/cardSection";
 
 
 const HomeNotAuth = function () {
@@ -19,6 +20,8 @@ const HomeNotAuth = function () {
 					<HeaderNoAuth/>
 					<RepresentationSection/>
 				</div>
+
+				<CardSection/>
 			</main>
 		</>
 )};
