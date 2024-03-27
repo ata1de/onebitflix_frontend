@@ -14,19 +14,19 @@ const slideOptions: any = {
 }
 
 interface props {
-  course: CourseType[];
+  courses: CourseType[];
 }
-const SlideComponent = function ({ course }: props) {
+const SlideComponent = function ({ courses }: props) {
   return (
     <>
       <div>
         <Splide options={{slideOptions}}>
 
-          {course?.map((course) => (
+          {courses?.map((course) => (
             <SplideSlide key={course.id}>
               <SlideCard course={course} />
             </SplideSlide>
-          ))}
+          ))} 
           
         </Splide>
       </div>

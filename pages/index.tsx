@@ -4,9 +4,17 @@ import { title } from "process";
 import HeaderNoAuth from "@/src/components/homeNoAuth/headerNoAuth";
 import RepresentationSection from "@/src/components/homeNoAuth/representationSection";
 import CardSection from "@/src/components/homeNoAuth/cardSection";
+import SlideSection from "@/src/components/homeNoAuth/slideSection";
+import { GetStaticProps } from "next";
+import courseService, { CourseType } from "@/src/services/courseService";
+import { ReactNode } from "react";
 
+interface IndexPageProps {
+	children?: ReactNode;
+	courses: CourseType[];
+}
 
-const HomeNotAuth = function () {
+const HomeNotAuth = function ({ courses }: IndexPageProps) {
   return (
 		<>
 			<Head>
@@ -20,10 +28,21 @@ const HomeNotAuth = function () {
 					<HeaderNoAuth/>
 					<RepresentationSection/>
 				</div>
-
 				<CardSection/>
+				<SlideSection newestCourses={courses}/>
 			</main>
 		</>
 )};
+
+export const getStaticProps: GetStaticProps = async () => {
+	const res = await courseService.getNewestCourses();
+		return {
+			props: {
+				courses: res.data,
+			},
+			// forma de avaliar se os itens no backend foram modificados
+			revalidate: 3600 * 24,
+			};
+};
 
 export default HomeNotAuth;
