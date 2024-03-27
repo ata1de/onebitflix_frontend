@@ -9,8 +9,8 @@ interface props {
 const SlideCard = ({ course }: props) => {
   return (
     <div>
-        <div>
-            <img className={styles.slideImg} src={` ${process.env.NEXT_PUBLIC_BASEURL}/${course.thumbnailUrl}`} alt={course.name} />
+        <div className={styles.slide}>
+            <img className={styles.slideImg} src={`${process.env.NEXT_PUBLIC_BASEURL}/${course.thumbnailUrl}`} alt={course.name} />
             <p className={styles.slideTitle}>{course.name}</p>
             <p className={styles.slideDescription}>{course.synopsis}</p>
         </div>
