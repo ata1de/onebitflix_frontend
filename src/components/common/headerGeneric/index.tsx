@@ -20,7 +20,6 @@ const HeaderGeneric = ({logoUrl, btnUrl, btnContent}: props) => {
                 </Link>
                 <Link href={btnUrl}>
                     <Button outline color='light' className={styles.headerBtn}>{btnContent}</Button>
-                
                 </Link>
             </Container>
         </div>
