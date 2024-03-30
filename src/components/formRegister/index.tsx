@@ -1,11 +1,23 @@
-import React from 'react'
+import React, { FormEvent } from 'react'
 import { Button , Form, FormGroup, Input, Label } from 'reactstrap'
 import styles from './styles.module.scss'
+import registerFunction from '@/src/helpers/register';
+import { useRouter } from 'next/router';
+
 
 const FormRegister = () => {
+    const router = useRouter();
+
+    const handleRegister = async (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        
+        registerFunction(event, router);
+        
+    };
+
   return (
     <div>
-        <Form className={styles.form} >
+        <Form className={styles.form} onSubmit={handleRegister}>
             <p className="text-center">
                 <strong>Faça sua conta!</strong>
             </p>
@@ -22,8 +34,8 @@ const FormRegister = () => {
             maxLength={20}
             className={styles.inputName}
             />
-        </FormGroup>
-        <FormGroup>
+            </FormGroup>
+            <FormGroup>
             <Label for="lastName" className={styles.label}>
                 SOBRENOME
             </Label>
@@ -115,5 +127,7 @@ const FormRegister = () => {
     </div>
   )
 }
+
+
 
 export default FormRegister

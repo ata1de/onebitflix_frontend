@@ -5,7 +5,8 @@ import styles from '../styles/registerLogin.module.scss'
 import FormRegister from '@/src/components/formRegister'
 import { Container } from 'reactstrap'
 import Footer from '@/src/components/common/footer'
-
+import { FormEvent } from 'react'
+import authService from '@/src/services/authService'
 
 
 const Register = () => {
