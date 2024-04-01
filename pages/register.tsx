@@ -1,15 +1,17 @@
 import HeaderGeneric from '@/src/components/common/headerGeneric'
 import Head from 'next/head'
-import React from 'react'
+import React, { useState } from 'react'
 import styles from '../styles/registerLogin.module.scss'
-import FormRegister from '@/src/components/formRegister'
+import FormRegister from '@/src/components/register/formRegister'
 import { Container } from 'reactstrap'
 import Footer from '@/src/components/common/footer'
-import { FormEvent } from 'react'
-import authService from '@/src/services/authService'
+import ToastComponent from '@/src/components/common/toast'
 
 
 const Register = () => {
+  const [toastIsOpen, setToastIsOpen] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
+
   return (
     <div>
         <Head>  
@@ -21,9 +23,10 @@ const Register = () => {
           <HeaderGeneric logoUrl="/" btnUrl="/login" btnContent="Quero fazer login"/>
           <Container className="py-5">
             <p className={styles.formTitle}>Bem-vindo(a) ao OneBitFlix!</p>
-              <FormRegister/>
+              <FormRegister setToastIsOpen={setToastIsOpen} setToastMessage={setToastMessage} />
           </Container>
           <Footer/>
+          <ToastComponent color='bg-danger' isOpen={toastIsOpen} message={toastMessage}/>
       </main>
     </div>
   )

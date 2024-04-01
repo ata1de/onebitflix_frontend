@@ -1,6 +1,6 @@
-import React, { FormEvent, useState } from 'react'
+import React, { FormEvent } from 'react'
 import { Button , Form, FormGroup, Input, Label } from 'reactstrap'
-import styles from './styles.module.scss'
+import styles from '../../../../styles/registerLogin.module.scss'
 import registerFunction from '@/src/helpers/register';
 import { useRouter } from 'next/router';
 
