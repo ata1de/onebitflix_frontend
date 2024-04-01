@@ -1,10 +1,10 @@
 import { FormEvent } from "react";
 import authService from "../services/authService";
-import { NextRouter, useRouter } from "next/router";
+import { NextRouter } from "next/router";
 
 
 
-const registerFunction = async(event: FormEvent<HTMLFormElement>, router: NextRouter) => { 
+const registerFunction = async(event: FormEvent<HTMLFormElement>, router: NextRouter, setToastIsOpen:  React.Dispatch<React.SetStateAction<boolean>>, setToastMessage: React.Dispatch<React.SetStateAction<string>>) => {
 
     const formData = new FormData(event.currentTarget);
     const firstName = formData.get("firstName")!.toString();
@@ -16,17 +16,26 @@ const registerFunction = async(event: FormEvent<HTMLFormElement>, router: NextRo
     const confirmPassword = formData.get("confirmPassword")!.toString();
     const params = { firstName, lastName, phone, birth, email, password };
 
-    if (password!==confirmPassword) {
-      alert('A senha e a confirmação estão diferentes')
-      return 
+    if (password != confirmPassword) {
+      setToastIsOpen(true);
+      setTimeout(() => {
+      setToastIsOpen(false);
+    }, 1000 * 3);
+      setToastMessage("Senha e confirmação diferentes.");
+          
+      return;
     }
 
     const {data, status} = await authService.register(params)
 
-    if (status === 201){
-        router.push("/login?registred=true");
+    if (data.status === 201) {
+      router.push("/login?sucess=true");
     } else {
-      alert(data.message);
+      setToastIsOpen(true);
+      setTimeout(() => {
+      setToastIsOpen(false);
+    }, 1000 * 3);
+      setToastMessage(data.message);
     }
 }
 
