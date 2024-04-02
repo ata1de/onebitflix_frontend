@@ -2,18 +2,19 @@ import React, { FormEvent } from 'react'
 import { Button , Form, FormGroup, Input, Label } from 'reactstrap'
 import styles from '../../../../styles/registerLogin.module.scss'
 import registerFunction from '@/src/helpers/register';
-import { useRouter } from 'next/router';
+import { NextRouter, useRouter } from 'next/router';
 
 interface FormRegisterProps {
     setToastIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
     setToastMessage: React.Dispatch<React.SetStateAction<string>>;
+    router: NextRouter;
 }
 
 const FormRegister: React.FC<FormRegisterProps> = ({
     setToastIsOpen,
     setToastMessage,
+    router
 }) => {
-    const router = useRouter();
 
     const handleRegister = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();

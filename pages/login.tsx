@@ -14,6 +14,11 @@ const Login = () => {
     const [toastIsOpen, setToastIsOpen] = useState(false);
     const [toastMessage, setToastMessage] = useState("");
 
+    useEffect(() =>{
+        if (sessionStorage.getItem('onebitflix-token')) {
+            router.push('/home')
+        }
+    }, [])
     
     useEffect(() => {
         const registredSucess = router.query.registred;
@@ -24,7 +29,7 @@ const Login = () => {
                 setTimeout(() => {
                 setToastIsOpen(false);
             }, 1000 * 3);
-            setToastMessage("Cadatro feito com sucesso!");}
+            setToastMessage("Cadastro feito com sucesso!");}
         }, [router.query])
 
     return (
