@@ -1,3 +1,4 @@
+import FeaturedSection from '@/src/components/homeAuth/FeaturedSection'
 import HeaderAuth from '@/src/components/homeAuth/HeaderAuth'
 import Head from 'next/head'
 import React from 'react'
@@ -10,7 +11,7 @@ const Home = () => {
             <link rel="shortcut icon" href="/favicon.svg" type="image/x-icon" />    
         </Head>
         <main>
-            <HeaderAuth/>
+            <FeaturedSection/>
         </main>
     </div>
   )
