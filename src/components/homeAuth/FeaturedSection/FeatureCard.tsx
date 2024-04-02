@@ -4,16 +4,10 @@ import { Button, Container } from 'reactstrap'
 import styles from './styles.module.scss'
 import { CourseType } from '@/src/services/courseService'
 
-const FeatureCard = ({id, name, thumbnailUrl ,synopsis }: CourseType) => {
-    const cardStyle: React.CSSProperties = {
-        backgroundImage: `url(${process.env.NEXT_PUBLIC_BASEURL}/${thumbnailUrl})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-      };
+const FeatureCard = ({id, name,synopsis }: CourseType) => {
   return (
     <div>
-        <Container style={cardStyle}>
+        <Container className='pt-4'>
                 <p className={styles.title}>{name}</p>
                 <p className={styles.description}>{synopsis}</p>
                 <Link href={`/courses/${id}`}>
