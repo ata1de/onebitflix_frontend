@@ -6,7 +6,7 @@ import courseService from '@/src/services/courseService';
 
 const FavoritesCategory= () => {
     const { data, error } = useSWR("/favorites", courseService.getFavoritesCourses);
-    console.log(`data do favorites category ${data}`)
+    // console.log(`data do favorites category ${data}`)
 
     if (error) return error;
     if (!data) return <p>Loading...</p>;

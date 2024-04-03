@@ -6,8 +6,8 @@ import styles from '../../../../styles//slideSection.module.scss'
 
 const FeaturedCategory = () => {
     const { data, error } = useSWR("/featured", courseService.getFeaturedCourses);
-    console.log(`data do featured category ${data}`)
-    console.log(data)
+    // console.log(`data do featured category ${data}`)
+    // console.log(data)
 
     if (error) return error;
     if (!data) return <p>Loading...</p>;
