@@ -1,32 +1,22 @@
-import useSWR from "swr";
-import courseService, { CourseType } from "../../../services/courseService";
-import HeaderAuth from "../HeaderAuth";
-import styles from './styles.module.scss'
-import FeatureCard from "./FeatureCard";
+import courseService from '@/src/services/courseService';
+import React from 'react'
+import useSWR from 'swr';
+import SlideComponent from '../../common/slideComponent';
+import styles from '../../../../styles//slideSection.module.scss'
 
-const FeaturedSection = function () {
+const FeaturedCategory = () => {
     const { data, error } = useSWR("/featured", courseService.getFeaturedCourses);
+    console.log(`data do featured category ${data}`)
+    console.log(data)
 
     if (error) return error;
     if (!data) return <p>Loading...</p>;
-
   return (
     <div>
-        {
-        data.data?.map((course: CourseType)=>(
-            <div key={course.id} style={{
-              backgroundImage: `linear-gradient(to bottom, #6666661a, #151515), url(${process.env.NEXT_PUBLIC_BASEURL}/${course.thumbnailUrl})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat',
-              height: '480px'
-            }}>
-                <HeaderAuth />
-                <FeatureCard id={course.id} name={course.name} synopsis={course.synopsis} thumbnailUrl={course.thumbnailUrl}/>
-            </div>
-        ))[0]}
+        <p className={styles.titleCategory}>EM DESTAQUE</p>
+        <SlideComponent courses={data.data}/>
     </div>
   )
 }
 
-export default FeaturedSection
+export default FeaturedCategory
