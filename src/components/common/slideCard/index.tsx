@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './styles.module.scss'
 import { CourseType } from "../../../services/courseService";
 
@@ -8,6 +8,17 @@ interface props {
 }
 
 const SlideCard = ({ course, auth }: props) => {
+  const [isFavorited, setIsFavorited] = useState(false);
+
+  const handleFavorite = () => {
+
+  setIsFavorited(!isFavorited);
+
+  if (auth) {
+    
+  };
+
+  }
   return (
     <div>
         <div className={styles.slide}>
@@ -16,13 +27,14 @@ const SlideCard = ({ course, auth }: props) => {
               <div className={styles.sectionTitle}>
                 <p className={styles.slideTitle}>{course.name}</p>
                 <img
-                  src="/course/iconAddFav.svg"
+                  src={isFavorited? "/course/iconFavorited.svg":"/course/iconAddFav.svg"}
                   alt="IconAddFav"
                   className={styles.favoriteIcon}
+                  onClick={handleFavorite}
                 />
               </div>
             ) : (
-              <p className={styles.slideTitle}>{course.name}</p>
+              <p className={styles.slideTitle} style={{ padding: '8px 16px' }}>{course.name}</p>
       )}
             <p className={styles.slideDescription}>{course.synopsis}</p>
         </div>
