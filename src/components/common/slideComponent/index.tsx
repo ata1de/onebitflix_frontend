@@ -8,9 +8,10 @@ import SlideCard from '../slideCard';
 
 interface props {
   courses: CourseType[];
+  auth?: boolean
 }
 
-const SlideComponent = function ({ courses }: props) {
+const SlideComponent = function ({ courses, auth }: props) {
   let slideCount = 0;
 
   if (courses.length > 4) {
@@ -50,8 +51,8 @@ const SlideComponent = function ({ courses }: props) {
           >
 
           {courses?.map((course) => (
-            <SplideSlide key={course.id}>
-              <SlideCard course={course} />
+            <SplideSlide key={course.id} >
+              <SlideCard course={course} auth={auth}/>
             </SplideSlide>
           ))} 
           

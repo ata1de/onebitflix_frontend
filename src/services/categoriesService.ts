@@ -23,7 +23,6 @@ const categoriesService = {
         })
 
         return res
-
     },
 
     getCourses: async (id: number) => {

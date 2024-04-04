@@ -12,7 +12,7 @@ const NewestCategory = () => {
   return (
     <div>
         <p className={styles.titleCategory}>LANÇAMENTOS</p>
-        <SlideComponent courses={data.data}/>
+        <SlideComponent courses={data.data} auth={true}/>
     </div>
   )
 }

@@ -41,19 +41,19 @@ const HeaderAuth = () => {
                   </Form>
                   <img src="homeAuth/iconSearch.svg" alt="lupaHeader" className={styles.searchImg}/>
                   <p className={styles.userProfile} onClick={handleOpenModal}>AB</p>            
-                </div>
-                <Modal
+              </div>
+              <Modal
                   isOpen={modalOpen}
                   onRequestClose={handleCloseModal}
                   shouldCloseOnEsc={true}
                   className={styles.modal}
                   overlayClassName={styles.overlayModal}
-                >
+              >
                     <Link href='/profile' className="text-decoration-none">
                       <p className={styles.modalText}>Meus dados</p>
                     </Link>
                     <p className={styles.modalText} onClick={handlerOutUser}>Sair</p>
-                </Modal>
+              </Modal>
         </Container>
       </div>
     )
