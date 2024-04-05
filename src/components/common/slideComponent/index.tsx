@@ -4,6 +4,7 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/splide.min.css'
 import { CourseType } from '@/src/services/courseService';
 import SlideCard from '../slideCard';
+import SlideCardNoAuth from '../slideCardNoAuth';
 
 
 interface props {
@@ -11,7 +12,7 @@ interface props {
   auth?: boolean
 }
 
-const SlideComponent = function ({ courses, auth }: props) {
+const SlideComponent = function ({ courses , auth}: props) {
   let slideCount = 0;
 
   if (courses.length > 4) {
@@ -52,7 +53,7 @@ const SlideComponent = function ({ courses, auth }: props) {
 
           {courses?.map((course) => (
             <SplideSlide key={course.id} >
-              <SlideCard course={course} auth={auth}/>
+              {auth? <SlideCard course={course}/> : <SlideCardNoAuth course={course} />}
             </SplideSlide>
           ))} 
           
