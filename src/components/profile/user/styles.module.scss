@@ -15,7 +15,7 @@
     margin: 20px auto;
       text-transform: uppercase;
   }
-  .nameAbbreviation {
+.nameAbbreviation {
     font-size: 40px;
     font-weight: bold;
     min-width: 70px;
@@ -26,24 +26,24 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  .userName {
+}  
+.userName {
     font-size: 30px;
     font-weight: bold;
     word-break: break-all;
-  }
-  .memberTime {
+}
+.memberTime {
     display: flex;
     justify-content: center;
     gap: 10px;
-  }
-  .memberTimeImg {
+}
+.memberTimeImg {
     width: 20px;
-  }
-  .memberTimeText {
+}
+.memberTimeText {
     font-size: 14px;
     color: $lightGray;
-  }
+}
 
 .inputFlexDiv{
     display: flex;
@@ -114,4 +114,65 @@
         box-shadow: none;
         outline: none;
       }
+}
+
+@media (max-width: 991px) {
+  .title {
+    text-align: center;
+  }
+  .btnColumn {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  .form{
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  .inputFlex {
+    width: 200px;
+  }
+  .input {
+    width: 200px;
+  }
+}
+
+@media (max-width: 527px) {
+  .title {
+    font-size: 35px;
+  }
+  .formName {
+    width: 95%;
+  }
+
+  .inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .inputFlexDiv {
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .nameAbbreviation {
+    font-size: 30px;
+    min-width: 60px;
+    min-height: 60px;
+  }
+  .userName {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 435px) {
+  .inputFlex {
+    width: 100%;
+  }
+  .input {
+    width: 100%;
+  }
 }

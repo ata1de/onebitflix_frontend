@@ -1,15 +1,13 @@
 import api from "./api"
 
 export type UserType = {
-    id: number
-    firstName: string
-    lastName: string
-    phone: string
-    birth: Date
-    email: string
-    password: string
-    role: 'admin' | 'user'
+    firstName: string;
+    lastName: string;
+    phone: string;
+    email: string;
+    created_at: string;
 }
+
 
 const userService = {
     getUser: async() => {
@@ -24,8 +22,24 @@ const userService = {
             return error.response
         })
 
-        return res
-    }
+        return res.data
+    },
+
+    userUpdate: async (params: UserType) => {
+        const token = sessionStorage.getItem("onebitflix-token");
+    
+        const res = await api.put("/users/current", params, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        }, }).catch((error) => {
+            if (error.response.status === 400 || error.response.status === 401) {
+                return error.response;
+        }
+            return error;
+        });
+        
+        return res.status;
+    },
 }
 
 export default userService

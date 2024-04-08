@@ -1,14 +1,16 @@
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, Form, Input } from 'reactstrap'
 import styles from './styles.module.scss'
 import Modal from 'react-modal'
 import { useRouter } from 'next/router'
+import userService from '@/src/services/userService'
 
 // Medida para falar que tem um modal na pagina
 Modal.setAppElement("#__next");
 
 const HeaderAuth = () => {
+    const [initials, setInitials] = useState("");
     const router = useRouter()
 
     const handlerOutUser = () => {
@@ -16,14 +18,20 @@ const HeaderAuth = () => {
       router.push('/')
     }
     const [modalOpen, setModalOpen] = useState(false);
-
     const handleOpenModal = () => {
       setModalOpen(true);
     };
-    
     const handleCloseModal = () => {
       setModalOpen(false);
     };
+
+    useEffect(() => {
+      userService.getUser().then((user) => {
+        const firstNameInitial = user.firstName.slice(0, 1);
+        const lastNameInitial = user.lastName.slice(0, 1);
+        setInitials(firstNameInitial + lastNameInitial);
+      });
+    }, []);
     return (
       <div>
           <Container className={styles.nav}>
@@ -40,7 +48,7 @@ const HeaderAuth = () => {
                       />
                   </Form>
                   <img src="homeAuth/iconSearch.svg" alt="lupaHeader" className={styles.searchImg}/>
-                  <p className={styles.userProfile} onClick={handleOpenModal}>AB</p>            
+                  <p className={styles.userProfile} onClick={handleOpenModal}>{initials}</p>            
               </div>
               <Modal
                   isOpen={modalOpen}

@@ -6,6 +6,7 @@ import FeatureCard from "./FeatureCard";
 
 const FeaturedSection = function () {
     const { data, error } = useSWR("/featured", courseService.getFeaturedCourses);
+    
 
     if (error) return error;
     if (!data) return <p>Loading...</p>;

@@ -1,5 +1,5 @@
 import HeaderAuth from '@/src/components/homeAuth/HeaderAuth'
-import UserFrom from '@/src/components/profile/user'
+import UserForm from '@/src/components/profile/user'
 import Head from 'next/head'
 import React from 'react'
 import { Button, Col, Container, Row } from 'reactstrap'
@@ -9,7 +9,7 @@ import useSWR from 'swr'
 
 const Profile = () => {
     const { data, error } = useSWR('/getUser', userService.getUser)
-    console.log(data)
+
 
     if (error) return error;
     if (!data) return <p>Loading...</p>;
@@ -31,7 +31,7 @@ const Profile = () => {
                         <Button outline className={styles.renderFormBtn}>SENHA</Button>
                     </Col>
                     <Col md>
-                        <UserFrom user={data.data}/>                    
+                        <UserForm />                    
                     </Col>
                 </Row>
             </Container>

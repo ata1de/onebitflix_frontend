@@ -14,7 +14,7 @@ const FavoritesCategory= () => {
     <div>
         <p className={styles.titleCategory}>MINHA LISTA</p>
         {data.data.courses.length >= 1 ? (
-            <SlideComponent courses={data.data.courses} />
+            <SlideComponent courses={data.data.courses} auth={true}/>
         ) : (
         <p className="h5 text-center pt-3">
             <strong>Você não tem nenhum curso na lista</strong>
