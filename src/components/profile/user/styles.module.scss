@@ -6,6 +6,10 @@
     max-width: 100%;
 }
 
+.formPsw {
+  @extend .form;
+}
+
 .formName {
     display: flex;
     align-items: center;
@@ -48,8 +52,11 @@
 .inputFlexDiv{
     display: flex;
     justify-content: space-between;
-    gap: 3rem;
-    
+    gap: 3rem;  
+}
+
+.inputFlexDivPsw {
+  @extend .inputFlexDiv
 }
 
 .inputs {
@@ -62,42 +69,47 @@
 }
 
 .inputFlex {
-    width: 250px;
-    background-color: transparent;
-    border:1px solid $darkGray;
+  width: 250px;
+  background-color: transparent;
+  border:1px solid $darkGray;
+  color: $lightGray;
+  transition: 0.3s;
+  text-transform: uppercase;
+  &::placeholder {
     color: $lightGray;
-    transition: 0.3s;
-    text-transform: uppercase;
-    &::placeholder {
-        color: $lightGray;
     }
-
+    
     &:focus {
         box-shadow: none;
         border-color: $lightRed;
         background-color: transparent;
         color: white
-    }
-
+      }
+      
 }
 
-.input{
-    @extend .inputFlex;
-    text-transform: lowercase;
-    width: 550px;
+.inputFlexPsw {
+  @extend .inputFlex
+}
     
+.input{
+        @extend .inputFlex;
+        text-transform: lowercase;
+        width: 550px;
+        
 }
+
 .inputNormalDiv{
-    display: flex;
-    flex-direction: column;
-    // align-items: center;
-    margin-top: 20px;
-    gap: 20px;
-  }
+      display: flex;
+      flex-direction: column;
+  // align-items: center;
+  margin-top: 20px;
+  gap: 20px;
+}
 
 .formBtn{
-    border-color: $lightRed;
-    // text-align: center;
+  border-color: $lightRed;
+  // text-align: center;
     color: white;
     font-weight: bold;
     font-size: 1rem;
@@ -106,14 +118,21 @@
     width: 200px;
     margin: auto;
     &:hover {
-        border-color: $darkRed;
-        background-color: transparent;
+      border-color: $darkRed;
+      background-color: transparent;
         color: $lightGray;
       }
-        &:focus {
+      &:focus {
         box-shadow: none;
         outline: none;
       }
+    }
+    
+    
+@media (max-width: 1999px) {
+    .form{
+      margin-top: 40px;
+    }
 }
 
 @media (max-width: 991px) {
@@ -128,6 +147,14 @@
   .form{
     margin-top: 40px;
   }
+
+  .inputFlexDivPsw{
+    flex-direction: column;
+  }
+
+  .inputFlexPsw {
+    width: 550px;
+  }
 }
 
 @media (max-width: 767px) {
@@ -136,6 +163,12 @@
   }
   .input {
     width: 200px;
+  }
+
+  .formPsw{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
   }
 }
 

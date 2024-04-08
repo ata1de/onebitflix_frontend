@@ -1,7 +1,6 @@
 import React, { FormEvent, useEffect, useState } from 'react'
 import { Form } from 'reactstrap'
 import styles from './styles.module.scss'
-import FormChange from '../formChange'
 import userService, { UserType } from '@/src/services/userService'
 import { Button, FormGroup, Input, Label } from 'reactstrap'
 import ToastComponent from '../../common/toast'
@@ -12,10 +11,12 @@ import { useRouter } from 'next/router'
 const UserForm = () => {
   const router = useRouter()
 
+  // Toat componente
   const [color, setColor] = useState("");
   const [toastIsOpen, setToastIsOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
+  // PUT/user/current
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [phone, setPhone] = useState('')
@@ -23,6 +24,7 @@ const UserForm = () => {
   const [ changedEmail, setChangeEmail] = useState('')
   const [created_at, setCreated_at] = useState('')
 
+  // contruir a data e o mês
   const date = new Date(created_at)
   const month = date.toLocaleDateString("default", { month: "long" });
 
