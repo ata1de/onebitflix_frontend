@@ -7,6 +7,7 @@ import styles from '../styles/profile.module.scss'
 import userService from '@/src/services/userService'
 import useSWR from 'swr'
 import PasswordForm from '@/src/components/profile/password'
+import PageSpinner from '@/src/components/common/spinner'
 
 const Profile = () => {
     const [form, setForm] = useState("userForm");
@@ -15,7 +16,7 @@ const Profile = () => {
 
 
     if (error) return error;
-    if (!data) return <p>Loading...</p>;
+    if (!data) return <PageSpinner/>
   return (
     <div>
         <Head>

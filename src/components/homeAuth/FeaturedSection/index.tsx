@@ -3,13 +3,14 @@ import courseService, { CourseType } from "../../../services/courseService";
 import HeaderAuth from "../HeaderAuth";
 import styles from './styles.module.scss'
 import FeatureCard from "./FeatureCard";
+import PageSpinner from "../../common/spinner";
 
 const FeaturedSection = function () {
     const { data, error } = useSWR("/featured", courseService.getFeaturedCourses);
     
 
     if (error) return error;
-    if (!data) return <p>Loading...</p>;
+    if (!data) return <PageSpinner/>;
 
   return (
     <div>

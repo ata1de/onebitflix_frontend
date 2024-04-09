@@ -3,13 +3,14 @@ import styles from '../../../../styles/slideSection.module.scss'
 import SlideComponent from '../../common/slideComponent'
 import useSWR from 'swr';
 import courseService from '@/src/services/courseService';
+import PageSpinner from '../../common/spinner';
 
 const FavoritesCategory= () => {
     const { data, error } = useSWR("/favorites", courseService.getFavoritesCourses);
     // console.log(`data do favorites category ${data}`)
 
     if (error) return error;
-    if (!data) return <p>Loading...</p>;
+    if (!data) return <PageSpinner/>;
   return (
     <div>
         <p className={styles.titleCategory}>MINHA LISTA</p>

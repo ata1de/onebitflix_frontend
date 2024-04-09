@@ -42,7 +42,7 @@ const authService = {
             sessionStorage.setItem("onebitflix-token", res.data.token);
         }
         
-        console.log(res)
+        // console.log(res)
         return res;
     },
 }
