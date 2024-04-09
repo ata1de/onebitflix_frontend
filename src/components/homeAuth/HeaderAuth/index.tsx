@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import React, { FormEvent, useEffect, useState } from 'react'
 import { Container, Form, Input } from 'reactstrap'
 import styles from './styles.module.scss'
 import Modal from 'react-modal'
@@ -11,6 +11,8 @@ Modal.setAppElement("#__next");
 
 const HeaderAuth = () => {
     const [initials, setInitials] = useState("");
+    const [searchName, setSearchName] = useState('')
+
     const router = useRouter()
 
     const handlerOutUser = () => {
@@ -25,6 +27,8 @@ const HeaderAuth = () => {
       setModalOpen(false);
     };
 
+    
+    // UseEffect para as iniciais no usuário
     useEffect(() => {
       userService.getUser().then((user) => {
         const firstNameInitial = user.firstName.slice(0, 1);
@@ -32,6 +36,20 @@ const HeaderAuth = () => {
         setInitials(firstNameInitial + lastNameInitial);
       });
     }, []);
+
+    // Função para a barra de pesquisa
+    const handleSearch = async (event: FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+  
+      router.push(`/search?name=${searchName}`);
+      setSearchName("");
+    };
+
+    const handlerSearchClick = () => {
+      router.push(`/search?name=${searchName}`);
+      setSearchName("");
+    }
+
     return (
       <div>
           <Container className={styles.nav}>
@@ -39,15 +57,19 @@ const HeaderAuth = () => {
                   <img src="/logoOnebitflix.svg" alt="logoOnebitflix" className={styles.imgLogoNav}/>
               </Link>
               <div className="d-flex align-items-center">
-                  <Form>
-                      <Input
-                      name="search"
-                      type="search"
-                      placeholder="Pesquisar"
-                      className={styles.input}
-                      />
+                <Form onSubmit={handleSearch}>
+                    <Input
+                    name="search"
+                    type="search"
+                    placeholder="Pesquisar"
+                    className={styles.input}
+                    value={searchName}
+                    onChange={(event) => {
+                      setSearchName(event.currentTarget.value.toLowerCase());
+                    }}
+                    />
                   </Form>
-                  <img src="homeAuth/iconSearch.svg" alt="lupaHeader" className={styles.searchImg}/>
+                  <img onClick={handlerSearchClick} src="homeAuth/iconSearch.svg" alt="lupaHeader" className={styles.searchImg}/>
                   <p className={styles.userProfile} onClick={handleOpenModal}>{initials}</p>            
               </div>
               <Modal
