@@ -1,0 +1,23 @@
+@import "./colors.module.scss";
+.noSearchText {
+    text-align: center;
+    padding: 20px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .main {
+    display: flex;
+    flex-direction: column;
+  }
+//   .header {
+//     background-color: black;
+//   }
+  .searchContainer {
+    flex: 1 0 auto;
+    justify-content: center;
+    align-items: center;
+  }
+//   .footer {
+//     background-color: black;
+//   }
