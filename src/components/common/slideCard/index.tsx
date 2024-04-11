@@ -57,7 +57,7 @@ const SlideCard = ({ course }: props) => {
   
   return (
     <div>
-      <Link href={`/course/${course.id}`} >
+      <Link href={`/course/${course.id}`} className='text-decoration-none'>
         <div className={styles.slide}>
             <img className={styles.slideImg} src={`${process.env.NEXT_PUBLIC_BASEURL}/${course.thumbnailUrl}`} alt={course.name} />
             <div className={styles.sectionTitle}>
