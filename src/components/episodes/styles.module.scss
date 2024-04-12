@@ -1,0 +1,40 @@
+@import '../../../styles/colors.module.scss';
+
+.episodeSection {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid $darkGray;
+    margin-bottom: 30px;
+
+    width: 950px;
+    height: 227px;
+}
+
+.episodeDivImg{
+    margin-right: 30px;
+}
+.episodeImg {
+    width: 400px;
+    height: 100%;
+}
+
+.episodeCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px 1.5rem 1.5rem 1.5rem;
+    color: $mediumGray;
+    overflow: hidden;
+}
+
+.episodeOrderTime{
+    display: flex;
+    gap: 1rem;
+    margin: 1.5rem auto 1rem 0px;
+}
+
+.episodeTitle{
+    font-size: 1rem;
+    font-weight: bold;
+    color: $lightGray;
+}

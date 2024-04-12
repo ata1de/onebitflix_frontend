@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { use, useEffect, useState } from "react";
 import courseService, { CourseType } from "@/src/services/courseService";
 import { Button, Container } from "reactstrap";
+import EpisodeList from "@/src/components/episodes";
 
 const CoursePage = function () {
     const [liked, setLiked] = useState(false);
@@ -60,7 +61,7 @@ const CoursePage = function () {
         <>
             <Head>
                 <title>Onebitflix - {course?.name}</title>
-                <link rel="shortcut icon" href="/favicon.svg" type="image/x-icon" /> 
+                <link rel="shortcut icon" href="../../favicon.svg" type="image/x-icon" /> 
             </Head>
             <main>
                 <div style={{
@@ -84,37 +85,29 @@ const CoursePage = function () {
                             />
                         </Button>
                         <div className={styles.interactions}>
-                        {liked === false ? (
-                                <img
-                                src="/course/iconLike.svg"
+                            <img
+                                src={liked ? "/course/iconLiked.svg" :"/course/iconLike.svg"}
                                 alt="likeImage"
                                 className={styles.interactionImages}
                                 onClick={handleLikeCourse}
                             />
-                            ) : (
-                                <img
-                                src="/course/iconLiked.svg"
-                                alt="likedImage"
-                                className={styles.interactionImages}
-                                onClick={handleLikeCourse}
-                            />
-                            )}
-                            {favorited === false ? (
-                                <img
+                            <img
                                 onClick={handleFavCourse}
-                                src="/course/iconAddFav.svg"
-                                alt="addFav"
-                                className={styles.interactionImages}
-                            />
-                            ) : (
-                                <img
-                                onClick={handleFavCourse}
-                                src="/course/iconFavorited.svg"
+                                src={favorited ? "/course/iconFavorited.svg" : "/course/iconAddFav.svg"}
                                 alt="favorited"
                                 className={styles.interactionImages}
                                 />
-                            )}
                         </div>
+                    </Container>
+                    <Container className={styles.episodeInfo}>
+                        <p className={styles.episodeDivision}>EPISODIOS</p>
+                        <p className={styles.episodeLength}>{course?.episodes?.length} episódios</p>
+                        {course?.episodes?.map((episode) => (
+                            <div key={episode.id}>
+                                <EpisodeList episode={episode} course={course} key={episode.id}/>
+                            </div>
+                        ))}
+
                     </Container>
                 
             </main>

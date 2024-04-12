@@ -41,18 +41,6 @@ const SlideCard = ({ course }: props) => {
   useEffect(() => {
     getFavorites()
   }, [isFavorited])
-
-  // console.log(favorites)
-  // if (course.name == "Liderança e Gestão de Equipes") {
-  //   console.log(isFavorited)
-  // }
-  
-  // const {data, error } = useSWR('/postFavorite', () => {
-  //   return courseService.postAddFavorite(course.id)
-  // })
-
-  // if (error) return error;
-  // if (!data) return <p>Loading...</p>;
   
   return (
     <div>
