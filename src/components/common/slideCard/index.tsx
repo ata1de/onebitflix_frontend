@@ -10,16 +10,16 @@ interface props {
 
 const SlideCard = ({ course }: props) => {
   const [isFavorited, setIsFavorited] = useState(false);
-  const [favorites , setFavorites] = useState<CourseType[]>([])
 
   // função para deixar o curso favorito
   const handleFavorite = async() => {
     try {
-      if (isFavorited) {
+      if (isFavorited == true) {
         await courseService.deleteFavorite(course.id)
         setIsFavorited(false)
       } else {
         await courseService.postAddFavorite(course.id);
+        setIsFavorited(true)
       }
     } catch (error) {
       console.error('Erro ao favoritar o curso:', error);
@@ -29,19 +29,18 @@ const SlideCard = ({ course }: props) => {
 
   // função para receber os favoritos
   const getFavorites = async() => {
-    const res = await courseService.getFavoritesCourses()
-    setFavorites(res.data.courses)
+    const res = await courseService.getEpisodes(course.id)
+
+    if (res.status == 200) {
+      setIsFavorited(res.data.favorited)
+    }
+    
   }
 
   // useEffect onde vai verificar se o curso ta ou não entre os favoritos
   useEffect(() => {
     getFavorites()
-    {favorites?.map((courseFavorited) => {
-      if (course.name === courseFavorited.name) {
-        setIsFavorited(true)
-      }
-    })}
-  }, [])
+  }, [isFavorited])
 
   // console.log(favorites)
   // if (course.name == "Liderança e Gestão de Equipes") {

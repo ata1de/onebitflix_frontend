@@ -10,7 +10,7 @@ const FeatureCard = ({id, name,synopsis }: CourseType) => {
         <Container className='pt-4'>
                 <p className={styles.title}>{name}</p>
                 <p className={styles.description}>{synopsis}</p>
-                <Link href={`/courses/${id}`} className="text-decoration-none">
+                <Link href={`/course/${id}`} className="text-decoration-none">
                     <Button outline color="light" className={styles.button}>
                     ACESSE AGORA!
                         <img src="/buttonPlay.svg" alt="buttonImg" className={styles.buttonImg}/>
