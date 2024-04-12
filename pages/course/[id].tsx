@@ -6,6 +6,7 @@ import { use, useEffect, useState } from "react";
 import courseService, { CourseType } from "@/src/services/courseService";
 import { Button, Container } from "reactstrap";
 import EpisodeList from "@/src/components/episodes";
+import Footer from "@/src/components/common/footer";
 
 const CoursePage = function () {
     const [liked, setLiked] = useState(false);
@@ -64,19 +65,19 @@ const CoursePage = function () {
                 <link rel="shortcut icon" href="../../favicon.svg" type="image/x-icon" /> 
             </Head>
             <main>
-                <div style={{
+                    <div style={{
                     backgroundImage: `linear-gradient(to bottom, #6666661a, #151515),
                     url(${process.env.NEXT_PUBLIC_BASEURL}/${course?.thumbnailUrl})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                     minHeight: "450px",
                 }}>
-                    <HeaderAuth />
-                </div>
+                        <HeaderAuth />
+                    </div>
                     <Container className={styles.courseInfo}>
                         <p className={styles.courseTitle}>{course?.name}</p>
                         <p className={styles.courseDescription}>{course?.synopsis}</p>
-                        <Button outline className={styles.courseBtn}>
+                        <Button outline disabled={course?.episodes?.length == 0 ? true : false} className={styles.courseBtn}>
                             ASSISTIR AGORA!
                             <img
                             src="/buttonPlay.svg"
@@ -102,14 +103,18 @@ const CoursePage = function () {
                     <Container className={styles.episodeInfo}>
                         <p className={styles.episodeDivision}>EPISODIOS</p>
                         <p className={styles.episodeLength}>{course?.episodes?.length} episódios</p>
-                        {course?.episodes?.map((episode) => (
-                            <div key={episode.id}>
-                                <EpisodeList episode={episode} course={course} key={episode.id}/>
-                            </div>
-                        ))}
+                        {course?.episodes?.length === 0 ? (
+                            <p>
+                                <strong>Não temos episódios ainda, volte outra hora! &#x1F606;&#x1F918;</strong>
+                            </p>
+                        ) : (
+                            course?.episodes?.map((episode) => (
+                            <EpisodeList key={episode.id} episode={episode} course={course}/>
+                        ))
+                        )}
 
                     </Container>
-                
+                    <Footer />    
             </main>
         </>
     );
