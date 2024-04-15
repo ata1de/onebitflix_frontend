@@ -1,6 +1,7 @@
 import { CourseType, EpisodeType } from '@/src/services/courseService';
 import React from 'react'
 import styles from './styles.module.scss'
+import { useRouter } from 'next/router';
 
 interface props {
     episode: EpisodeType;
@@ -9,6 +10,12 @@ interface props {
   
 
 const EpisodeList = ({ episode, course} : props) => {
+    const router = useRouter();
+
+    const handleEpisodePlayer = () => {
+      router.push(
+        `/course/episode/${episode.order - 1}?courseid=${course.id}`)
+      };
 
     const handleSecondsToMin = (totalSeconds: number) => {
         const minutes = Math.floor(totalSeconds / 60);
@@ -24,7 +31,7 @@ const EpisodeList = ({ episode, course} : props) => {
         return result;
       };
   return (
-    <div className={styles.episodeSection}>
+    <div className={styles.episodeSection} onClick={handleEpisodePlayer}>
         <div className={styles.episodeDivImg}>
             <img className={styles.episodeImg} src={`${process.env.NEXT_PUBLIC_BASEURL}/${course.thumbnailUrl}`}alt="Thumbnail do curso" />
         </div>

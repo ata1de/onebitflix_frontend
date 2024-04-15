@@ -62,7 +62,7 @@ const CoursePage = function () {
         <>
             <Head>
                 <title>Onebitflix - {course?.name}</title>
-                <link rel="shortcut icon" href="../../favicon.svg" type="image/x-icon" /> 
+                <link rel="shortcut icon" href="/favicon.svg" type="image/x-icon" /> 
             </Head>
             <main>
                     <div style={{
@@ -102,7 +102,7 @@ const CoursePage = function () {
                     </Container>
                     <Container className={styles.episodeInfo}>
                         <p className={styles.episodeDivision}>EPISODIOS</p>
-                        <p className={styles.episodeLength}>{course?.episodes?.length} episódios</p>
+                        <p className={styles.episodeLength}>{course?.episodes!.length == 1 ? `${course?.episodes?.length} episódio` : `${course?.episodes?.length} episódios`}</p>
                         {course?.episodes?.length === 0 ? (
                             <p>
                                 <strong>Não temos episódios ainda, volte outra hora! &#x1F606;&#x1F918;</strong>

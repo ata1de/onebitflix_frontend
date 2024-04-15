@@ -69,7 +69,7 @@ const HeaderAuth = () => {
                     }}
                     />
                   </Form>
-                  <img onClick={handlerSearchClick} src="homeAuth/iconSearch.svg" alt="lupaHeader" className={styles.searchImg}/>
+                  <img onClick={handlerSearchClick} src="/homeAuth/iconSearch.svg" alt="lupaHeader" className={styles.searchImg}/>
                   <p className={styles.userProfile} onClick={handleOpenModal}>{initials}</p>            
               </div>
               <Modal
