@@ -8,6 +8,12 @@
 
     width: 950px;
     height: 227px;
+    cursor: pointer;
+    transition: 0.5s;
+
+    &:hover {
+        border-color: $lightRed;
+    }
 }
 
 .episodeDivImg{
