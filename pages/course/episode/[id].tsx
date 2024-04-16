@@ -10,9 +10,10 @@ import ReactPlayer from "react-player";
 
 const EpisodePlayer = function () {
     const router = useRouter()
-
+    
     const episodeOrder = parseFloat(router.query.id?.toString() || "");
     const courseId = router.query.courseid?.toString() || "";
+    const [loading, setLoading] = useState(true);
 
     console.log(episodeOrder)
     console.log(courseId)
@@ -27,10 +28,21 @@ const EpisodePlayer = function () {
         setCourse(res.data);
       }
     };
-  
+    
     useEffect(() => {
       getCourse();
     }, [courseId]);
+
+    useEffect(() => {
+        if (!sessionStorage.getItem("onebitflix-token")) {
+        router.push("/login");
+        } else {
+        setLoading(false);
+        }
+    }, []);
+    
+    if (loading) {
+        return <PageSpinner />;}
 
     const handleNextEpisode = () => {
         router.push(`/course/episode/${episodeOrder + 1}?courseid=${courseId}`);
@@ -41,6 +53,8 @@ const EpisodePlayer = function () {
       };
 
     if (course?.episodes == undefined) return <PageSpinner />;
+
+
 
     return (
         <>

@@ -1,18 +1,33 @@
 import HeaderAuth from '@/src/components/homeAuth/HeaderAuth'
 import UserForm from '@/src/components/profile/user'
 import Head from 'next/head'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Col, Container, Row } from 'reactstrap'
 import styles from '../styles/profile.module.scss'
 import userService from '@/src/services/userService'
 import useSWR from 'swr'
 import PasswordForm from '@/src/components/profile/password'
 import PageSpinner from '@/src/components/common/spinner'
+import { useRouter } from 'next/router'
 
 const Profile = () => {
     const [form, setForm] = useState("userForm");
     
     const { data, error } = useSWR('/getUser', userService.getUser)
+
+    const router = useRouter();
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        if (!sessionStorage.getItem("onebitflix-token")) {
+        router.push("/login");
+        } else {
+        setLoading(false);
+        }
+    }, []);
+
+    if (loading) {
+        return <PageSpinner />;}
 
 
     if (error) return error;
