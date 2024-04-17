@@ -33,10 +33,10 @@ const Home = () => {
         </Head>
         <main>
             <FeaturedSection/>
+            <FavoritesCategory/>
             <NewestCategory/>
             {/* <FeaturedCategory/> */}
             <ListCategories/>
-            <FavoritesCategory/>
             <Footer/>
         </main>
     </div>

@@ -8,6 +8,7 @@ import { Button, Container } from "reactstrap";
 import EpisodeList from "@/src/components/episodes";
 import Footer from "@/src/components/common/footer";
 import PageSpinner from "@/src/components/common/spinner";
+import Link from "next/link";
 
 const CoursePage = function () {
     const [liked, setLiked] = useState(false);
@@ -16,7 +17,8 @@ const CoursePage = function () {
     const router = useRouter()
     const { id } = router.query
     const [loading, setLoading] = useState(true);
-    
+
+    const firstElement = course?.episodes?.[0];
 
     // função para o like
     const handleLikeCourse = async () => {
@@ -92,14 +94,16 @@ const CoursePage = function () {
                     <Container className={styles.courseInfo}>
                         <p className={styles.courseTitle}>{course?.name}</p>
                         <p className={styles.courseDescription}>{course?.synopsis}</p>
-                        <Button outline disabled={course?.episodes?.length == 0 ? true : false} className={styles.courseBtn}>
-                            ASSISTIR AGORA!
-                            <img
-                            src="/buttonPlay.svg"
-                            alt="buttonImg"
-                            className={styles.buttonImg}
-                            />
-                        </Button>
+                        <Link href={`/course/episode/${firstElement?.order! - 1}?courseid=${course?.id}`} className="text-decoration-none">
+                            <Button outline disabled={course?.episodes?.length == 0 ? true : false} className={styles.courseBtn}>
+                                ASSISTIR AGORA!
+                                <img
+                                src="/buttonPlay.svg"
+                                alt="buttonImg"
+                                className={styles.buttonImg}
+                                />
+                            </Button>
+                        </Link>
                         <div className={styles.interactions}>
                             <img
                                 src={liked ? "/course/iconLiked.svg" :"/course/iconLike.svg"}
