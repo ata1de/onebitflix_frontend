@@ -1,40 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+<h1 align='center'>Onebitflix 🚩🖥</h1>
 
-First, run the development server:
+Onebitflix é o projeto final do curso Onebitcode, no qual se baseia em uma aplicação para cursos de programação, cada curso estando em uma categoria e contendo episodios. Desing totalmente inspirado na Netflix (o nome entrega tudo😉).
 
-```bash
+
+## Aprendizados ☁
+Este projeto foi uma experiência incrível de aprendizado, especialmente porque foi o meu primeiro envolvimento direto com o desenvolvimento de backend. Utilizamos Next.js para o frontend, o que nos permitiu criar interfaces de usuário dinâmicas e responsivas de forma eficiente. Além disso, incorporamos Sass para estilização, tornando o código mais organizado e fácil de manter.
+
+No lado do servidor, empregamos Node.js com o framework Express, que simplificou muito a criação de rotas e a lógica de negócios. JWT foi implementado para autenticação, garantindo a segurança das nossas APIs. Também utilizamos Axios para comunicação entre o frontend e o backend de forma eficiente e confiável.
+
+
+## Stack utilizada 👩‍💻
+
+ **Controle:** AdminJS
+
+**DataBase:** SQL, sequelize(ORM)
+
+**Back-end:** Node, Express, JWT, Axios, Cors, Bcryt
+
+**Front-end:** 
+- **Next.js**: Um framework de React que simplifica o desenvolvimento de aplicações web, oferecendo funcionalidades como renderização do lado do servidor, geração estática e pré-renderização, além de facilitar a criação de rotas e páginas dinâmicas.
+- **Sass** (Syntactically Awesome Style Sheets): Uma linguagem de folhas de estilo que estende o CSS, oferecendo recursos como variáveis, aninhamento, mixins e importações, tornando a estilização de páginas web mais eficiente e organizada.
+- **Bootstrap**: Um framework de código aberto que oferece um conjunto de ferramentas e estilos pré-definidos para facilitar o desenvolvimento de interfaces web responsivas e visualmente atraentes. O Bootstrap fornece componentes reutilizáveis, como grids, botões, formulários, e muito mais, ajudando os desenvolvedores a criar layouts consistentes e profissionais de forma rápida e eficiente.
+- **React-Modal**: Uma biblioteca utilizada para criar modais (janelas pop-up) em aplicações React. Com o React-Modal, os desenvolvedores podem exibir conteúdos adicionais, formulários, notificações e outros elementos em uma camada sobreposta à página principal, mantendo a interatividade e a usabilidade da aplicação. O React-Modal oferece flexibilidade na customização dos modais e é amplamente utilizado para melhorar a experiência do usuário em diversos tipos de aplicações React.
+- **Splide.js**: Uma biblioteca JavaScript utilizada para criar sliders/carrosséis responsivos em páginas web. Ele é uma opção popular para adicionar funcionalidades de navegação por slides em sites e aplicações, permitindo exibir conteúdos como imagens, vídeos ou qualquer outro elemento de forma dinâmica e interativa.
+
+## Screenshots 🖨
+
+![image](https://github.com/ata1de/onebitflix_frontend/assets/121314892/bb887c28-7773-4a51-9302-8b647f6ddfed)
+
+## Instalação
+
+Siga esses passos:
+
+- Clone o repositório do backend
+
+```
+git clone https://github.com/ata1de/onebitflix_backend.git
+```
+- instale as dependências do package.json
+```
+npm install
+```
+- rode o programa
+
+```
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Depois clone o repositório do front-end
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```
+git clone https://github.com/ata1de/onebitflix_frontend.git
+```
+- instale as dependências do json
+```
+npm install
+```
+- Dê run
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```
+npm run dev
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Licença
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+[MIT](https://choosealicense.com/licenses/mit/)
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
