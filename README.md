@@ -3,6 +3,13 @@
 
 Onebitflix é o projeto final do curso Onebitcode, no qual se baseia em uma aplicação para cursos de programação, cada curso estando em uma categoria e contendo episodios. Desing totalmente inspirado na Netflix (o nome entrega tudo😉).
 
+## DEMO 📼
+
+
+
+https://github.com/user-attachments/assets/f7df90c5-a8f4-4d20-bdef-6615c3afd56b
+
+
 
 ## Aprendizados ☁
 Este projeto foi uma experiência incrível de aprendizado, especialmente porque foi o meu primeiro envolvimento direto com o desenvolvimento de backend. Utilizamos Next.js para o frontend, o que nos permitiu criar interfaces de usuário dinâmicas e responsivas de forma eficiente. Além disso, incorporamos Sass para estilização, tornando o código mais organizado e fácil de manter.
